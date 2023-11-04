@@ -1,0 +1,14 @@
+﻿@using İl_ilçe_semt.ViewModels;
+@model IndexViewModel
+
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+
+
+    @Html.DropDownListFor(s=>s.SelectedItem,new SelectList(Model.Cities,"Id","CityName"))
+    <input  type="submit" value="Gönder" />
+
+
+
+}
