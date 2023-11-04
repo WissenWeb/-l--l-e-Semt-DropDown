@@ -6,7 +6,14 @@
 {
 
 
-    @Html.DropDownListFor(s=>s.SelectedItem,new SelectList(Model.Cities,"Id","CityName"))
+    @Html.DropDownListFor(s=>s.SelectedItem,new SelectList(Model.Cities,"Id","CityName"),"Lütfen il seçiniz..")
+    <br />
+
+
+    @Html.DropDownListFor(s=>s.DistrictSelectedItem,new SelectList(Model.District,"Id","Name"),"Lütfen ilçe seçiniz..")
+
+
+
     <input  type="submit" value="Gönder" />
 
 

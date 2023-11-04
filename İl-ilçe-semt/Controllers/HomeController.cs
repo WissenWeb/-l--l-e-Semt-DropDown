@@ -19,7 +19,7 @@ namespace İl_ilçe_semt.Controllers
         {
 
 
-            return View(new IndexViewModel() { Cities = GetCities() });
+            return View(new IndexViewModel() { Cities = GetCities(), District = new List<District>() });
         }
 
 
@@ -28,8 +28,13 @@ namespace İl_ilçe_semt.Controllers
         {
 
 
-            return View(new IndexViewModel() { Cities = GetCities(), SelectedItem = model.SelectedItem });
+            List<District> selectedDistrict = GetDistrict().Where(s => s.CityId == model.SelectedItem).ToList();
 
+            return View(new IndexViewModel() { Cities = GetCities(), District = selectedDistrict, SelectedItem = model.SelectedItem });
+
+
+
+            // Semtleri siz yapın
 
 
         }
@@ -47,14 +52,40 @@ namespace İl_ilçe_semt.Controllers
             new City(){ Id = 2, CityName ="Ankara" },
             new City(){ Id = 3, CityName ="İzmir" },
             new City(){ Id = 4, CityName ="Erzurum" },
+            new City(){ Id = 4, CityName ="Kayseri" },
             new City(){ Id = 5, CityName ="Muğla" },
-            new City(){ Id = 6, CityName ="Kayseri" },
+
             new City(){ Id = 7, CityName ="Zonguldak" },
             new City(){ Id = 8, CityName ="Van" },
 
 
+            };
+
+        }
+        public List<District> GetDistrict()
+        {
+
+            return new List<District>() {
+
+
+             new District(){ Id=1, Name="Pendik", CityId = 1 },
+             new District(){ Id=2, Name="Kartal", CityId = 1 },
+             new District(){ Id=3, Name="Tuzla", CityId = 1 },
+             new District(){ Id=4, Name="Bala", CityId = 2 },
+             new District(){ Id=5, Name="Kızılay", CityId = 2 },
+             new District(){ Id=6, Name="Keçiören", CityId = 2 },
+             new District(){ Id=7, Name="Alsancak", CityId = 3 },
+             new District(){ Id=8, Name="Urla", CityId = 3 },
+             new District(){ Id=9, Name="Çeşme", CityId = 3 },
+             new District(){ Id=10, Name="Oltu", CityId = 4 },
+             new District(){ Id=11, Name="Hınıs", CityId = 4 },
+              new District(){ Id=8, Name="Ağırnas", CityId = 5 },
+             new District(){ Id=9, Name="Develi", CityId = 5 },
+             new District(){ Id=10, Name="Bodrum", CityId = 6 },
+             new District(){ Id=11, Name="Fethiye", CityId = 6 },
 
             };
+
 
         }
 
